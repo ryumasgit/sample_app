@@ -32,6 +32,15 @@ class ListsController < ApplicationController
     redirect_to list_path(list.id)
   end
 
+  def destroy
+    #　データレコードを1件取得
+    list = List.find(params[:id])
+    # データレコードを削除
+    list.destroy
+    # 投稿一覧画面へリダイレクト
+    redirect_to '/lists'
+  end
+
   private
   # ストロングパラメータ
   def list_params
